@@ -1,0 +1,130 @@
+#include <iostream>
+#include <ctime>
+#include <string>
+#include <fstream>
+using namespace std;
+
+struct Shoes {
+
+	string name;
+	int LongShoes;
+	float ShoesPrice;
+};
+
+void bubbleSortLongShoes(Shoes Shoes[], int Size);
+void bubbleSortShoesPrice(Shoes Shoes[], int Size);
+void showShoes(const Shoes p);
+void randString(string& str);
+void Cout(Shoes Shoes[], int Size);
+void File(Shoes Shoes[], int Size);
+
+int main() {
+
+	int const Size = 15;
+	Shoes Shoes[Size];
+	cout << "The name of Shoes\t" << "Shoes Long\t" << "ShoesPrice\n";
+	for (int i = 0; i < Size; i++)
+	{
+		Shoes[i].LongShoes = 10 + rand() % 30;
+		Shoes[i].ShoesPrice = 50 + rand() % 400;
+		randString(Shoes[i].name);
+		showShoes(Shoes[i]);
+
+	}
+
+	Cout(Shoes, Size);
+	File(Shoes, Size);
+
+	return 0;
+}
+
+
+void randString(string& str) {
+	static const char alphabet[] =
+		"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+		"abcdefghijklmnopqrstuvwxyz";
+	str = "     ";
+
+
+	for (int i = 0; i < str.length(); i++) {
+		int r = rand() % (sizeof(alphabet) - 1);
+		str[i] = alphabet[r];
+	}
+	str[str.length()] = 0;
+}
+
+void showShoes(const Shoes p) {
+
+	cout << "\t" << p.name << "\t\t\t"
+		<< p.LongShoes << "\t\t"
+		<< "   " << p.Shoes << endl;
+}
+
+void bubbleSortShoesPrice(Shoes Shoes[], int Size) {
+	int j = 0;
+	Shoes tmp;
+	for (int i = 0; i < Size; i++) {
+		for (int j = Size - 1; j >= i + 1; j--) {
+			if (Shoes[j].ShoesPrice > Shoes[i].ShoesPrice)
+			{ 
+				tmp = Shoes[i];
+				Shoes[i] = Shoes[j];
+				Shoes[j] = tmp;
+			}
+		}
+	}
+}
+
+void bubbleSortLongShoes(Shoes Shoes[], int Size) {
+	int j = 0;
+	Shoes tmp;
+	for (int i = 0; i < Size; i++) {
+		for (int j = Size - 1; j >= i + 1; j--) {
+			if (Shoes[j].LongShoes > Shoes[i].LongShoes) 
+			{  
+				tmp = Shoes[i];
+				Shoes[i] = Shoes[j];
+				Shoes[j] = tmp;
+			}
+		}
+	}
+}
+
+void Cout(Shoes Shoes[], int Size) {
+	cout << endl << "                        Sorted ShoesPrice" << endl << endl;
+	cout << "The name of Shoes\t" << "   Shoes Long\t" << "      ShoesPrice\n";
+	bubbleSortShoesPrice(Shoes, Size);
+
+	for (int i = 0; i < Size; i++)
+		showShoes(Shoes[i]);
+
+	cout << endl << "                 Sorted Shoes Long" << endl << endl;
+	cout << "The name of Shoes\t" << "   Shoes Long\t" << "      ShoesPrice\n";
+	bubbleSortLongShoes(Shoes, Size);
+
+	for (int i = 0; i < Size; i++)
+		showShoes(Shoes[i]);
+}
+
+void File(Shoes Shoes[], int Size) {
+	fstream f;
+	f.open("data.txt", ios::out | ios::trunc);
+	f << endl << "                        Sorted ShoesPrice" << endl << endl;
+	f << "The name of Shoes\t" << "   Shoes Long\t" << "      ShoesPrice\n";
+	bubbleSortShoesPrice(Shoes, Size);
+
+	for (int i = 0; i < Size; i++)
+		f << "\t" << Shoes[i].name << "\t\t\t"
+		<< Shoes[i].LongShoes << "\t\t"
+		<< "   " << Shoes[i].ShoesPrice << endl;
+
+	f << endl << "                 Sorted Shoes Long" << endl << endl;
+	f << "The name of Shoes\t" << "   Shoes Long\t" << "      ShoesPrice\n";
+	bubbleSortLongShoes(Shoes, Size);
+
+	for (int i = 0; i < Size; i++)
+		f << "\t" << Shoes[i].name << "\t\t\t"
+		<< Shoes[i].LongShoes << "\t\t"
+		<< "   " << Shoes[i].ShoesPrice << endl;
+	f.close();
+}
