@@ -1,0 +1,21 @@
+#include <iostream>
+использование  пространства  имен std;
+int x;
+int O;
+
+int main()
+{
+
+
+ cout < < " введите переменную x"<;
+ cin > > > x;
+
+
+ O = abs(x) * x * x * x * x * x;
+ 
+ cout << " ответ = " << O<;
+
+
+	getchar();
+	getchar();
+}
