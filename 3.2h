@@ -1,0 +1,42 @@
+#include <iostream>
+#include <iomanip>  
+#include <fstream>
+#include <cmath>
+using namespace std;
+
+fstream f;
+int main()
+{
+
+    float dx;
+    float x;
+    float z;
+
+    f.open("2H.txt", ios::out | ios::trunc);
+    cout << "Solve function. \nEnter dx: ";
+    cin >> dx;
+    cout << "Enter function range [x;z]\n";
+    cout << "Enter x\n";
+    cin >> x;
+    cout << "Enter z\n";
+    cin >> z;
+    f << "\tx\t\ty" << endl;
+    f.precision(5);
+
+    while (x < z) {
+        float y = -(2+9x)*(2+9x)+6x;
+        f << "\t"
+            << x
+            << "\t\t"
+            << y
+            << endl;
+
+        cout << "\t"
+            << x
+            << "\t\t"
+            << y
+            << endl;
+
+        x += dx;
+    }
+    f.close();
