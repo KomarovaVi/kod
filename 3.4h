@@ -1,0 +1,29 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+fstream f;
+int main()
+{
+	int N;
+	int N;
+	int H;
+	f.open("4.txt", ios::out | ios::trunc);
+	cout << "Enter range [N;M]" << endl;
+	cout << "Enter N" << endl;
+	cin >> N;
+	cout << "Enter M" << endl;
+	cin >> M;
+	cout << "Enter step" << endl;
+	cin >> H;
+
+	
+
+	while (N <= M)
+	{
+		cout << N << ' ';
+		f << N << ' ';
+		h = N + H;
+	}
+	f.close();
+}
+//Вывести на экран ряд натуральных чисел от Н до М с шагом Ш. Например, если Н 10, М 35, Ш 5, то вывод должен быть таким: 10 15 20 25 30 35. Значения Н, М, Ш указываются пользователем (считываются с клавиатуры).
