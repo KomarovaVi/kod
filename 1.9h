@@ -1,0 +1,43 @@
+#include <iostream>
+
+using namespace std;
+float gK;
+float K;
+float DG;
+int v;
+int x;
+
+int main() {
+
+
+ cout << " Выберите величину:<
+ << "1.Гигакалорий в минуту \n"
+		"2.Калорий в час\n"
+		"3.Джоуль в час " <;
+ cin >> v;
+ cout << "введите зачение" <;
+ cin >> x;
+
+	switch (v) {
+	case 1:
+ cout << " 1.gK = "  << x << endl;
+ cout << " 2.K = "  << x * 0.01667 * 16666667 <;
+ cout << " 3.DG = "  << x * 0.01667 * 41886800000 <;
+		break;
+	case 2:
+ cout << " 1.gK = "  << x * 0.00000000001667 <;
+ cout << " 2.K = "  << x << endl;
+ cout << " 3.DG = "  << x * 4.187 <;
+		break;
+	case 3:
+ cout << " 1.gK = "  << x / 4186800000 * 0.01667 <;
+ cout << " 2.K = "  << x / 4.187 <;
+ cout << " 3.DG = "  << x << endl;
+		break;
+	}
+
+	getchar(); // ожидание ввода
+	getchar();
+	return 0;
+
+}
