@@ -5,12 +5,11 @@ using namespace  std;
 fstream f;
 void main()
 {
-	f.open("Task7.txt", ios::out | ios::trunc);
+	f.open("7.txt", ios::out | ios::trunc);
 	srand(time(NULL));
 
 	int mas[10];
-	int sap = 0;
-
+	
 	int sapF = 0;
 
 	for (int i = 0; i < 10; i++)
@@ -29,9 +28,9 @@ void main()
 		}
 		
 	}
-	cout << "Srednne orefm > 0 = " << sap / sapF << endl;
+	cout << "SКоличество элементов > 0 = " << sapF << endl;
 
-	f << "Srednne orefm > 0 = " << sap / sapF << endl;
+	f << "Количество элементов > 0 = " << sapF << endl;
 
 	f.close();
 }
